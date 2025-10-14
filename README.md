@@ -1,118 +1,128 @@
-<!-- Note: You can replace the h1 tag with your actual logo once you have one. -->
+# 🎺 jazzed
 
-<!-- <p align="center"><img src="link_to_your_logo.svg" width="200"></p> -->
+**The open-source, self-hostable platform for building powerful data enrichment and automation workflows.**
 
-<h1 align="center">Jazzed</h1>
+Think of Jazzed as an open-source, extensible alternative to [Clay](https://clay.com/), built with a modern, developer-friendly architecture inspired by [n8n](https://n8n.io/). Chain together APIs, enrich data, and automate the tedious parts of your work, all while maintaining full control over your data and infrastructure.
 
-<p align="center">
-<strong>Build, automate, and scale complex data workflows with ease.</strong>
-</p>
+[![Build Status](https://img.shields.io/github/actions/workflow/status/your-username/jazzed/ci.yml?branch=main&style=flat-square)](https://github.com/your-username/jazzed/actions)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
+[![Join our Discord](https://img.shields.io/discord/your-discord-id?color=7289DA&label=discord&logo=discord&logoColor=white&style=flat-square)](https://discord.gg/your-invite-link)
+[![Follow on Twitter](https://img.shields.io/twitter/follow/your-twitter-handle?style=social&logo=twitter)](https://twitter.com/your-twitter-handle)
 
-<p align="center">
-<img alt="Project Status" src="https://www.google.com/search?q=https://img.shields.io/badge/status-pre--alpha-red%3Fstyle%3Dfor-the-badge">
-<img alt="License" src="https://www.google.com/search?q=https://img.shields.io/badge/license-MIT-blue%3Fstyle%3Dfor-the-badge">
-<img alt="Contributions Welcome" src="https://www.google.com/search?q=https://img.shields.io/badge/contributions-welcome-brightgreen%3Fstyle%3Dfor-the-badge">
-</p>
+---
 
-Jazzed is an open-source, self-hostable workflow automation platform designed for developers and data teams. It provides the tools to visually connect different APIs and services, manipulate data, and trigger complex chains of actions, putting you in complete control of your data and infrastructure.
+![Screenshot of the Jazzed workflow builder interface, showing nodes like "Get LinkedIn Profile" connected to "Enrich with PDL" and "Find Tech Stack", with a results table below.](https://via.placeholder.com/800x450.png?text=Jazzed+Workflow+Builder+UI)
 
-Inspired by amazing tools like n8n and Clay, Jazzed aims to provide a powerful, pluggable, and transparent alternative for building internal tools and data enrichment pipelines.
-✨ Core Features
+## ✨ Core Features
 
-    Visual Workflow Builder: A modern, node-based editor to visually map out complex logic without getting lost in boilerplate code.
+*   **Visual Workflow Builder**: Intuitively chain together data sources and actions with a simple, step-by-step or node-based interface.
+*   **Extensible Integration System**: Easily add new data sources and APIs. Every integration is a simple module, allowing you or the community to add new capabilities without touching the core code.
+*   **Self-Hostable & Open-Source**: Run Jazzed on your own infrastructure with a single Docker command. You own your data, you control your costs.
+*   **Scalable & Performant**: Built on a modern, asynchronous architecture using a job queue and dedicated workers to handle heavy-lifting without slowing you down.
+*   **Secure Credential Management**: Safely store and use your API keys for various services, encrypted at rest.
+*   **Spreadsheet-Style Results**: View, sort, and manage the data from your workflow runs in a familiar table interface.
 
-    🔌 Pluggable Integration System: Easily add new data sources or private APIs. Each integration is a simple module, making the system endlessly extensible.
+## 🚀 Quick Start: Run locally with Docker
 
-    🚀 Real-time Execution & Debugging: Watch your workflows run step-by-step and inspect the data at every stage, making debugging intuitive and fast.
+Get a full local instance of Jazzed running in under 5 minutes.
 
-    🐳 Self-Host with One Command: All services are packaged with Docker for a simple, one-command setup on your own infrastructure.
+### Prerequisites
 
-    🔒 Secure Credential Management: Securely store and manage your API keys and secrets.
+*   [Git](https://git-scm.com/)
+*   [Docker](https://www.docker.com/get-started) & [Docker Compose](https://docs.docker.com/compose/install/)
 
-    👥 Built for Teams: (Coming Soon) Collaboration features, shared workflows, and access controls.
+### Installation
 
-⚠️ Project Status: Pre-Alpha
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/your-username/jazzed.git
+    cd jazzed
+    ```
+2.  **Set up environment variables:**
+    (We'll add a `.env.example` soon. For now, no action is needed for the default setup.)
 
-Jazzed is currently under heavy development and is in a pre-alpha state. It is not yet ready for production use. We welcome early contributors who are excited to shape the future of the project!
-🚀 Getting Started (Local Development)
+3.  **Launch the application:**
+    ```bash
+    docker-compose up -d
+    ```
 
-Follow these instructions to get the Jazzed development environment up and running on your local machine.
-Prerequisites
+That's it! The application stack (Frontend, API, Worker, PostgreSQL, Redis) is now running.
 
-    Node.js (v18 or later)
+*   **Frontend UI**: [http://localhost:3000](http://localhost:3000)
+*   **Backend API**: [http://localhost:8000](http://localhost:8000)
 
-    pnpm (v8 or later)
+## 🏗️ Architecture Overview
 
-    Docker and Docker Compose
+Jazzed is a distributed system designed for scalability and resilience. For local development, all components are neatly packaged in our `docker-compose.yml`.
 
-1. Clone the Repository
+*   **`ui` (Frontend)**: A Next.js/React app where users build workflows and view results.
+*   **`api` (Backend)**: A Node.js (NestJS) API that manages users, workflows, and delegates tasks.
+*   **`worker` (Worker)**: A dedicated Node.js process that listens for jobs and executes the core logic (e.g., making external API calls).
+*   **`PostgreSQL` (Database)**: The primary data store for users, workflows, results, and encrypted credentials.
+*   **`Redis` (Job Queue)**: A message broker that decouples the API from the Workers, ensuring a fast and responsive user experience.
 
-git clone [https://github.com/your-username/jazzed.git](https://github.com/your-username/jazzed.git)
-cd jazzed
+## 🧩 Building Your First Integration
 
-2. Install Dependencies
+One of Jazzed's most powerful features is its pluggable integration system. Want to add a new data source? Just create a new folder in the `integrations/` directory.
 
-This project is a monorepo using pnpm workspaces. Install all dependencies from the root directory.
+Each integration is a self-contained module. For example, to add a "People Data Labs" integration:
 
-pnpm install
+**Directory Structure:**
+```
+integrations/
+└── pdl/
+    ├── metadata.json
+    ├── run.ts
+    └── logo.svg
+```
 
-3. Configure Environment Variables
+*   **`metadata.json`**: Defines the integration's name, description, and the actions it can perform.
+    ```json
+    {
+      "name": "People Data Labs",
+      "description": "Enrich person and company data.",
+      "actions": [
+        {
+          "id": "enrichPerson",
+          "name": "Enrich Person by Profile",
+          "description": "Takes a LinkedIn URL and returns enriched data."
+        }
+      ]
+    }
+    ```
 
-Create a local environment file by copying the example.
+*   **`run.ts`**: Contains the TypeScript/JavaScript logic to execute the action.
+    ```typescript
+    // A simplified example of what the run function might look like
+    export async function enrichPerson(credentials: { apiKey: string }, inputs: { profileUrl: string }) {
+      const { apiKey } = credentials;
+      const { profileUrl } = inputs;
 
-cp .env.example .env.local
+      const response = await fetch(`https://api.pdl.com/v5/person/enrich?api_key=${apiKey}&profile_url=${profileUrl}`);
+      const data = await response.json();
 
-Now, open .env.local and fill in the required variables. The initial file will have sane defaults for local development that match the docker-compose.yml file.
-4. Start Dependent Services
+      return data;
+    }
+    ```
 
-Jazzed requires PostgreSQL and Redis to run. We've included a docker-compose.yml file to make this easy.
+The core application dynamically loads all modules from the `integrations/` directory on startup.
 
-docker-compose up -d
+## 🤝 Contributing
 
-This will start the databases in the background.
-5. Run the Development Servers
+We are building Jazzed in the open and welcome contributions of all kinds! Whether you're a developer, a designer, or just an enthusiast, we'd love for you to get involved.
 
-Start all the applications (UI, API, Worker) in development mode using Turborepo.
+Check out our **[CONTRIBUTING.md](CONTRIBUTING.md)** guide to learn more about how you can help.
 
-pnpm dev
+## 🗺️ Roadmap
 
-You're all set!
+We're just getting started! Here's a glimpse of what we're planning:
 
-    The UI will be running at http://localhost:3000
+*   [ ] More core integrations (Clearbit, Hunter, BuiltWith, etc.)
+*   [ ] Webhook and Cron Job triggers for workflows
+*   [ ] Team collaboration and workspace features
+*   [ ] Full documentation site
+*   [ ] A paid, managed cloud offering for those who don't want to self-host
 
-    The Backend API will be running at http://localhost:3001
+## 📄 License
 
-🛠️ Technology Stack
-
-    Monorepo: Turborepo & pnpm
-
-    Frontend: Next.js (React) & TypeScript
-
-    Backend: NestJS (Node.js)
-
-    Database: PostgreSQL
-
-    Job Queue: Redis
-
-    Containerization: Docker
-
-📁 Repository Structure
-
-This repository is a monorepo containing the entire Jazzed platform.
-
-jazzed/
-├── integrations/     # Pluggable connectors for external APIs
-└── packages/         # Internal applications and shared libraries
-    ├── api/          # The NestJS backend API and workflow engine
-    ├── core/         # Shared code (types, utils) used across packages
-    ├── ui/           # The Next.js frontend application
-    └── worker/       # The asynchronous job worker
-
-🤝 Contributing
-
-We are excited to build a community of contributors! Whether you want to fix a bug, add a new integration, or improve the documentation, your help is welcome.
-
-Please see our CONTRIBUTING.md guide to get started. (Note: This file will be created soon).
-📄 License
-
-Jazzed is open-source and licensed under the MIT License.
+Jazzed is open-source software licensed under the **[MIT license](LICENSE)**.
