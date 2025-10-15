@@ -1,0 +1,11 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "poetry run uvicorn app.main:app --reload",
+    "lint": "poetry run ruff check .",
+    "format": "poetry run ruff format .",
+    "test": "poetry run pytest"
+  }
+}
