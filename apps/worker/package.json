@@ -1,0 +1,10 @@
+{
+  "name": "worker",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "poetry run arq src.worker.WorkerSettings",
+    "lint": "poetry run ruff check .",
+    "format": "poetry run ruff format ."
+  }
+}

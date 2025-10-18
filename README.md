@@ -51,7 +51,7 @@ That's it! The application stack (Frontend, API, Worker, PostgreSQL, Redis) is n
 
 Jazzed is a polyglot (multi-language) distributed system designed for scalability and resilience. We use the best tool for the job: TypeScript for the frontend and Python for data-intensive backend services. For local development, all components are orchestrated via `docker-compose.yml`.
 
-*   **`ui` (Frontend)**: A Next.js/React app where users build workflows and view results. Written in TypeScript.
+*   **`ui` (Frontend)**: A React app where users build workflows and view results. Written in TypeScript.
 *   **`api` (Backend)**:  A Python (FastAPI) API that manages users, workflows, validates data, and delegates tasks to the worker. It serves as the single source of truth for the frontend.
 *   **`worker` (Worker)**: A dedicated Python process that listens for jobs and executes the core data enrichment and integration logic (e.g., web scraping, external API calls).
 *   **`PostgreSQL` (Database)**: The primary data store for users, workflows, results, and encrypted credentials.

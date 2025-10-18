@@ -1,17 +1,17 @@
 {
   "name": "jazzed-monorepo",
   "private": true,
+  "packageManager": "pnpm@10.18.3",
   "scripts": {
-    "build": "turbo build",
-    "dev": "turbo dev",
-    "lint": "turbo lint",
+    "build": "turbo run build",
+    "dev": "turbo run dev --parallel",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "eslint-config-jazzed": "workspace:*",
     "prettier": "^3.0.0",
     "turbo": "latest",
     "typescript": "^5.0.0"
-  },
-  "packageManager": "pnpm@8.6.0"
+  }
 }
