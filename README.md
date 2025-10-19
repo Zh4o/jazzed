@@ -49,7 +49,7 @@ That's it! The application stack (Frontend, API, Worker, PostgreSQL, Redis) is n
 
 ## 🏗️ Architecture Overview
 
-Jazzed is a polyglot (multi-language) distributed system designed for scalability and resilience. We use the best tool for the job: TypeScript for the frontend and Python for data-intensive backend services. For local development, all components are orchestrated via `docker-compose.yml`.
+Jazzed is a polyglot (multi-language) system designed for scalability and resilience. TypeScript for the frontend and Python for data-intensive backend services. For local development, all components are orchestrated via `docker-compose.yml`.
 
 *   **`ui` (Frontend)**: A React app where users build workflows and view results. Written in TypeScript.
 *   **`api` (Backend)**:  A Python (FastAPI) API that manages users, workflows, validates data, and delegates tasks to the worker. It serves as the single source of truth for the frontend.
@@ -70,8 +70,6 @@ We're just getting started! Here's a glimpse of what we're planning:
 *   [ ] More core integrations (Clearbit, Hunter, BuiltWith, etc.)
 *   [ ] Webhook and Cron Job triggers for workflows
 *   [ ] Team collaboration and workspace features
-*   [ ] Full documentation site
-*   [ ] A paid, managed cloud offering for those who don't want to self-host
 
 ## 📄 License
 
