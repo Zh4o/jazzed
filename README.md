@@ -63,14 +63,6 @@ We are building Jazzed in the open and welcome contributions of all kinds! Wheth
 
 Check out our **[CONTRIBUTING.md](CONTRIBUTING.md)** guide to learn more about how you can help.
 
-## 🗺️ Roadmap
-
-We're just getting started! Here's a glimpse of what we're planning:
-
-*   [ ] More core integrations (Clearbit, Hunter, BuiltWith, etc.)
-*   [ ] Webhook and Cron Job triggers for workflows
-*   [ ] Team collaboration and workspace features
-
 ## 📄 License
 
 Jazzed is open-source software licensed under the **[MIT license](LICENSE)**.
