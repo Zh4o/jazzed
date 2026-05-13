@@ -2,7 +2,7 @@
 
 **The open-source, self-hostable platform for building powerful data enrichment and automation workflows.**
 
-Think of Jazzed as an open-source, extensible alternative to [Clay](https://clay.com/), built with a modern, developer-friendly architecture inspired by [n8n](https://n8n.io/). Orchestrate enrichment APIs and automate the tedious parts of GTM engineering, without paying the middle-man tax.
+Think of Jazzed as an open-source, extensible alternative to [Clay](https://clay.com/), built with a modern, developer-friendly architecture inspired by [n8n](https://n8n.io/). Orchestrate enrichment APIs and automate the tedious parts of GTM engineering, without paying the middle-man tax. Complete WIP!
 
 [![Build Status](https://img.shields.io/github/actions/workflow/status/your-username/jazzed/ci.yml?branch=main&style=flat-square)](https://github.com/your-username/jazzed/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
